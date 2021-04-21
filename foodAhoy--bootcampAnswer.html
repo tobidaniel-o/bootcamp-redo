@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title title>Food Ahoy</title>
+  <title title>Food Ahoy - ANSWER</title>
   <link href='https://fonts.googleapis.com/css?family=Rubik:700|Work+Sans' rel='stylesheet' type='text/css'>
   <style>
-    * {
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+
+    * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
       box-sizing: border-box;
@@ -84,9 +78,8 @@
     input[type=submit]:focus {
       outline: 0;
     }
-  </style>
+</style>
 </head>
-
 <body>
   <div class="wrapper">
 
@@ -99,55 +92,54 @@
         <option value="fries">Fries</option>
         <option value="poutines">Poutine</option>
       </select>
-
+      
       <input type="submit" value="Order" />
     </form>
 
     <h2>Inventory</h2>
-
+    
     <ul class="inventory"></ul>
   </div>
 
-  <script>
-    const app = {}
-    app.inventory = {
-      burgers: 10,
-      hotdogs: 15,
-      fries: 100,
-      poutines: 25
+<script>
+
+  const app = {};
+
+  app.inventory = {
+    burgers: 10,
+    hotdogs: 15,
+    fries: 100,
+    poutines: 25
+  }
+
+  app.displayItems = function() {
+    for (let item in app.inventory) {
+      let element = document.createElement('li')
+      element.innerHTML = `We have ${app.inventory[item]} ${item}`;
+      app.ul.appendChild(element);
     }
-    const ul = document.querySelector('ul');
-    const form = document.querySelector('form');
+  }
 
-    app.displayItems = () => {
-      for (let item in app.inventory) {
-        let element = document.createElement('li')
-        element.innerHTML = `We have ${app.inventory[item]} ${item}`;
-        app.ul.appendChild(element);
-      }
-    }
+  app.changeInventory = function() {
+    app.form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let product = document.querySelector('select').value;
+      app.inventory[product] = app.inventory[product] - 1;
+      app.ul.innerHTML = '';
+      
+      app.displayItems();
+    })
+  }
 
-    app.changeInventory = () => {
-      app.form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        let product = document.querySelector('select').value;
-        app.inventory[product] = app.inventory[product] - 1;
-        app.ul.innerHTML = '';
-        app.displayItems()
+  app.init = function() {
+    app.form = document.querySelector('form');
+    app.ul = document.querySelector('ul.inventory');
+    app.displayItems();
+    app.changeInventory();
+  }
 
-      })
-    };
+  app.init();
 
-    app.init = () => {
-      app.form = document.querySelector('form')
-      app.ul = document.querySelector('ul.inventory')
-      app.displayItems()
-      app.changeInventory()
-    }
-
-    app.init()
-  </script>
-
+</script>
 </body>
-
 </html>
