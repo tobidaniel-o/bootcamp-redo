@@ -1,21 +1,11 @@
-const genres = ["Horror", "Comedy", "Drama", "Action", "Suspense", "Documentary"]
+// const numbers = [39, 25, 90, 123]
+// const max = Math.max(...numbers)
+// console.log(max)
+// console.log(..."tobi")
+// console.log(..."👩‍👩‍👧‍👧");
 
-const ulElement = document.querySelector('.movieGenres')
-
-genres.forEach((genre) => {
-  const newListItem = document.createElement('li')
-  newListItem.textContent = genre
-  ulElement.append(newListItem)
-})
-
-axios({
-  method: "GET",
-  url: "http://api.site.com/api",
-  responseType: "json",
-  params: {
-    param1: "value",
-  },
-}).then(function (res) {
-  console.log(res);
-});
-
+const myArray = [68, 43, 5, 11]
+const copiedArray = [...myArray]
+myArray.push("a string")
+console.log(myArray);
+console.log(copiedArray)
