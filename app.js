@@ -4,8 +4,9 @@
 // console.log(..."tobi")
 // console.log(..."👩‍👩‍👧‍👧");
 
-const myArray = [68, 43, 5, 11]
-const copiedArray = [...myArray]
-myArray.push("a string")
-console.log(myArray);
-console.log(copiedArray)
+// const myArray = [68, 43, 5, 11]
+// const copiedArray = [...myArray]
+// myArray.push("a string")
+// console.log(myArray);
+// console.log(copiedArray)
+
