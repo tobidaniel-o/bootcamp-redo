@@ -14,10 +14,10 @@
   <script>
 
     const pokemonURL = 'https://pokeapi.co/api/v2/pokemon/1/';
-    const myObject = fetch(pokemonURL)
-    console.log(myObject)
+    // const myObject = fetch(pokemonURL)
+    // console.log(myObject)
 
-    myObject.then((res) => res.json()).then((jsonData) => console.log(jsonData))
+    // myObject.then((res) => res.json()).then((jsonData) => console.log(jsonData))
     // fetch(pokemonURL)
     //   .then( (res) => {
     //     return res.json();
@@ -27,7 +27,15 @@
     //   })
 
     // console.log('I am not waiting for the API!');
+    async function getPokemon() {
+      const myObject = await fetch(pokemonURL)
+      console.log(myObject)
 
+      const jsonData = await myObject.json()
+      console.log(jsonData)
+    }
+
+    getPokemon()
   </script>
 </body>
 
